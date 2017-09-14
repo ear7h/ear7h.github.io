@@ -2,7 +2,7 @@
 
 // Define defaults for each variable.
 
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$base-font-family: "Go", Helvetica, Arial, sans-serif !default;
 $base-font-size:   16px !default;
 $base-font-weight: 400 !default;
 $small-font-size:  $base-font-size * 0.875 !default;
@@ -10,13 +10,24 @@ $base-line-height: 1.5 !default;
 
 $spacing-unit:     30px !default;
 
-$text-color:       #111 !default;
+$text-color:       #665D54 !default;
 $background-color: #fdfdfd !default;
-$brand-color:      #2a7ae2 !default;
+$brand-color:      #6AB7FF !default;
 
-$grey-color:       #828282 !default;
+$grey-color:       #665D54 !default;
 $grey-color-light: lighten($grey-color, 40%) !default;
 $grey-color-dark:  darken($grey-color, 25%) !default;
+
+
+/**
+ * ear7h colors
+ */
+$off_white: #E0E4FF;
+$off_black: #40251A;
+$soft_black: #665D54;
+$primary_green: #AED941;
+$primary_orange: #DC8A73;
+$primary_blue: #6AB7FF;
 
 // Width of the content area
 $content-width:    800px !default;

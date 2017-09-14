@@ -1,3 +1,43 @@
+/** 
+ * fonts
+ */
+
+@font-face {
+    font-family: 'Ub';
+    src: url("/assets/fonts/Ubuntu-B.ttf");
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Go';
+    src: url("/assets/fonts/Go-Mono.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Go';
+    src: url("/assests/fonts/Go-Mono-Bold.ttf");
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Go';
+    src: url("/assests/fonts/Go-Mono-Italic.ttf");
+    font-style: italic;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Go';
+    src: url("/assets/fonts/Go-Mono-Bold-Italic.ttf");
+    font-style: italic;
+    font-weight: bold;
+}
+
+
 /**
  * Reset some basic elements
  */
@@ -83,6 +123,7 @@ li {
  */
 h1, h2, h3, h4, h5, h6 {
   font-weight: $base-font-weight;
+  font-family: "Ub";
 }
 
 
