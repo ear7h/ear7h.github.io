@@ -2,7 +2,7 @@
 layout: 	post
 title: 		A weekend at the palace
 date: 		2017-09-17 12:33:41 -0700
-categories: poetry
+categories: art
 ---
 
 

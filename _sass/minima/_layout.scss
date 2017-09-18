@@ -188,6 +188,8 @@
   list-style: none;
 
   > li {
+    border-left: 4px $brand-color solid;
+    padding-left: 8px;
     margin-bottom: $spacing-unit;
   }
 }
@@ -195,6 +197,7 @@
 .post-meta {
   font-size: $small-font-size;
   color: $grey-color;
+  margin: 0px;
 }
 
 .post-link {
