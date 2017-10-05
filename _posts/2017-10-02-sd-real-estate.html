@@ -11780,9 +11780,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="San-Diego-Real-Estate-Analysis">San Diego Real Estate Analysis<a class="anchor-link" href="#San-Diego-Real-Estate-Analysis">&#182;</a></h1><p>This notebook will explore the San Diego housing market using data pulled from Zillow on 2 October 2017.</p>
-<p><strong>Do note that this information is mostly for homes on sale.</strong></p>
-<p>The data was gathered by scraping the Zillow website. Zillow is a listing service which shows all kinds of property being sold by real estate agents. This includes empty lots, homes, apartments, and forclosed properties. This information is in the <code>sale_type</code> field.</p>
+<h1 id="San-Diego-Real-Estate-Analysis">San Diego Real Estate Analysis<a class="anchor-link" href="#San-Diego-Real-Estate-Analysis">&#182;</a></h1><p>The data was gathered by scraping the Zillow website. Zillow is a listing service which shows all kinds of property being sold by real estate agents. This includes empty lots, homes, apartments, and forclosed properties. This information is in the <code>sale_type</code> field.</p>
 <p>It should be noted that the homes on zillow are all for sale and no actual sale data was gathered. This means that the sample only represents the sellers of homes in San Diego rather than the market as a whole.</p>
 <p>Each datapoint has the following fields:</p>
 <ul>
@@ -11802,22 +11800,15 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Imports are pretty straight forward.
-CSV parser, numpy for working with number lists, and matplotlib for visualizations.</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Imports are pretty straight forward.</span>
+<span class="c1"># CSV parser, numpy for working with number lists, and matplotlib for visualizations.</span>
+
+<span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">IPython.core.display</span> <span class="k">as</span> <span class="nn">di</span>
@@ -11854,8 +11845,7 @@ CSV parser, numpy for working with number lists, and matplotlib for visualizatio
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A list is initialized and populated using the csv file.
-The CSV file is formatted as follows:</p>
+<p>The CSV file is formatted as follows:</p>
 
 </div>
 </div>
@@ -11929,21 +11919,15 @@ The CSV file is formatted as follows:</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Some listings do not have an associated price, this function will simply make the script more legible within filter functions.</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">has_price</span><span class="p">(</span><span class="n">listing</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Some listings do not have an associated price, this function will </span>
+<span class="c1"># simply make the script more legible within filter functions.</span>
+
+<span class="k">def</span> <span class="nf">has_price</span><span class="p">(</span><span class="n">listing</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">listing</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;NA&#39;</span>
 </pre></div>
 
@@ -11952,21 +11936,15 @@ The CSV file is formatted as follows:</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Inline import statements aren't conventional but the formatter import is obscure. The following block of code creates some functions which make formatting of the graphs easier to read.</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="k">import</span> <span class="n">FuncFormatter</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Inline import statements aren&#39;t conventional but the formatter import is obscure. </span>
+<span class="c1"># The following block of code creates some functions which make formatting of the graphs easier to read.</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="k">import</span> <span class="n">FuncFormatter</span>
 
 <span class="k">def</span> <span class="nf">millions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
     <span class="s1">&#39;The two args are the value and tick position&#39;</span>
