@@ -1,4 +1,4 @@
 #!/bin/sh
 
-$c=$(which caddy)
-sudo c
+CMD=$(which caddy)
+sudo $CMD
