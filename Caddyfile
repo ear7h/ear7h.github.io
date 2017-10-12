@@ -1,5 +1,4 @@
 ear7h.net {
 	root ./_site
+	proxy /api localhost:8001
 }
-
-proxy /api localhost:8001
