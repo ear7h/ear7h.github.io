@@ -1,3 +1,4 @@
 #!/bin/sh
 
-caddy
+$c=$(which caddy)
+sudo c
