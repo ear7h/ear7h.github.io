@@ -7,6 +7,8 @@ categories: programming
 
 Being very bored, I asked my friends on instagram for program ideas. One of them was a generator causes of death, so here it is. Rather than randomly outputting from an array, this takes the probability of the leading causes into account.
 
+Source: [https://www.cdc.gov/nchs/data/hus/hus16.pdf#017](https://www.cdc.gov/nchs/data/hus/hus16.pdf#017)
+
 
 <p id="cause"></p> <button onclick="update()">Die!</button>
 
