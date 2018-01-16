@@ -10,7 +10,7 @@ categories: art
 >Of high hopes <br/>
 >And all the restless <br/>
 >And frequent dopes. <br/>
->Time looses its linearity <br/>
+>Time loses its linearity <br/>
 >Mutlidimensional connections <br/>
 >Black holes and singularity <br/>
 >Are frequent emotions. <br/>
