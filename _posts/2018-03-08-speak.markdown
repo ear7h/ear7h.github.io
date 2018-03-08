@@ -18,12 +18,21 @@ let arr = loremIpsum.split(" ")
 let i = 0
 
 
+function nextI(i) {
+	p = Math.random() * 10
+	switch(true){
+	case p < 1:	return i > 0 ? i - 1 : i 
+	case p < 2:	return i
+	default: return i + 1
+	}
+}
+
 function sayNext() {
 	setTimeout(()=>{
 		p = document.createElement("p")
 		p.innerText = arr[i]
 		speak.innerHTML += arr[i] + " "
-		i++
+		i = nextI(i)
 		if (i < arr.length) {
 			sayNext()
 		}
