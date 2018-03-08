@@ -111,14 +111,32 @@ const mouse = new Vector(0, 0);
 drag_start = null
 drag_end = null
 
-canvas.addEventListener("mousedown", (e) => {
-	drag_start = mouse.currentVec()
-	drag_end = mouse
-})
+// touch support
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+	let is_start = true
 
-canvas.addEventListener("mouseup", (e) => {
-	drag_end = mouse.currentVec()
-})
+	canvas.addEventListener("mousedown", (e) => {
+		if (is_start) {
+			drag_start = mouse.currentVec()
+			drag_end = mouse	
+			is_start = false
+		} else {
+			drag_end = mouse.currentVec()
+			is_start = true
+		}
+	})
+} else {
+	canvas.addEventListener("mousedown", (e) => {
+		drag_start = mouse.currentVec()
+		drag_end = mouse
+	})
+
+	canvas.addEventListener("mouseup", (e) => {
+		drag_end = mouse.currentVec()
+	})
+}
+
+
 
 // vertecies, center, radius, rotation
 function makeEqPoly(numVert, center, radius, theta) {
