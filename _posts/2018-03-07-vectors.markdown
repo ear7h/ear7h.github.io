@@ -5,6 +5,8 @@ date: 2018-03-07 14:29:16
 categories: programming
 ---
 
+### Click and drag (desktop) or tap two points (mobile) on canvas.
+
 <p id="outbox">msg</p>
 
 <script>
