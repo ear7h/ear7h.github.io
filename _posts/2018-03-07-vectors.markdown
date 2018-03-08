@@ -18,7 +18,7 @@ var log = document.querySelector('#outbox')
 
 class Vector {
 	static fromPolar(theta, r) {
-		return new Vector(r * Math.cos(theta), r * Math.sin(theta))
+		return new Vector(r * Math.cos(theta), - r * Math.sin(theta))
 	}
 	constructor(x, y) {
 		this.x = x
@@ -87,7 +87,7 @@ class Vector {
 	}
 
 	theta() {
-		return Math.atan2(this.x, this.y)
+		return Math.atan2(this.y, this.x)
 	}
 }
 
@@ -97,36 +97,37 @@ const mouse = new Vector(0, 0);
 (function(){
 	let bw = parseInt(
 		getComputedStyle(canvas)
-			.borderWidth.replace("px", "")
+			.getPropertyValue("border-top-width")
+			.replace("px", "")
 	)
 
 	canvas.addEventListener("mousemove", (e) => {
-		mouse.x = e.layerX - bw
-		mouse.y = e.layerY - bw
+		mouse.x = e.x - canvas.offsetLeft - bw
+		mouse.y = e.y - canvas.offsetTop - bw
 	})
 })();
 
-i = 0
 
-start = null
-end = null
+drag_start = null
+drag_end = null
 
 canvas.addEventListener("mousedown", (e) => {
-	start = mouse.currentVec()
-	end = mouse
-	console.log("start", start)
+	drag_start = mouse.currentVec()
+	drag_end = mouse
 })
 
 canvas.addEventListener("mouseup", (e) => {
-	end = mouse.currentVec()
+	drag_end = mouse.currentVec()
 })
 
 // vertecies, center, radius, rotation
 function makeEqPoly(numVert, center, radius, theta) {
-	slice = 2 * Math.PI / numVert
+	let slice = 2 * Math.PI / numVert
 
 	c.beginPath()
-	for(let i = 0; i <= numVert; i ++) {
+	let v = Vector.fromPolar(theta, radius).plus(center)
+	c.moveTo(v.x, v.y)
+	for(let i = 1; i <= numVert; i ++) {
 		let ang = theta + slice * i
 		v = Vector.fromPolar(ang, radius).plus(center)
 		c.lineTo(v.x, v.y)
@@ -160,20 +161,20 @@ function makeVector(p1, p2) {
 
 function animate() {
 
-	c.fillStyle = "rgba(255,0,0,255)"
+	// clear screen
 	c.clearRect(0, 0, canvas.width, canvas.height)
 
 	let v = new Vector(0, 0)
 
-	if (start) {
-		v = makeVector(start, end)
+	if (drag_start) {
+		v = makeVector(drag_start, drag_end)
 	}
 
-	c.fillRect(mouse.x, mouse.y, 8, 8)
-
-	log.innerHTML = JSON.stringify(v) + v.theta()
-
-	i++
+	log.innerHTML = `
+	X: ${v.x} <br/>
+	Y: ${v.y} <br/>
+	Magnitude: ${v.mag().toFixed(2)} <br/>
+	Angle: ${(360 * v.theta() / (2 * Math.PI)).toFixed(2)}°`
 
 	window.requestAnimationFrame(animate)
 }
