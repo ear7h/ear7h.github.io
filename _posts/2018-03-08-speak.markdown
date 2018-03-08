@@ -20,6 +20,7 @@ let i = 0
 
 function nextI(i) {
 	p = Math.random() * 10
+
 	switch(true){
 	case p < 1:	return i > 0 ? i - 1 : i 
 	case p < 2:	return i
@@ -29,9 +30,6 @@ function nextI(i) {
 
 function sayNext() {
 	setTimeout(()=>{
-		//global speak
-		p = document.createElement("p")
-		p.innerText = arr[i]
 		speak.innerHTML += arr[i] + " "
 		i = nextI(i)
 		if (i < arr.length) {
