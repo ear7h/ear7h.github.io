@@ -1,0 +1,183 @@
+---
+layout: canvas-post
+title: vectors
+date: 2018-03-07 14:29:16
+categories: programming
+---
+
+<p id="outbox">msg</p>
+
+<script>
+
+const c = canvas.getContext('2d')
+
+const h = canvas.height
+const w = canvas.width
+
+var log = document.querySelector('#outbox')
+
+class Vector {
+	static fromPolar(theta, r) {
+		return new Vector(r * Math.cos(theta), r * Math.sin(theta))
+	}
+	constructor(x, y) {
+		this.x = x
+		this.y = y
+	}
+
+	// copy of the current Vector
+	currentVec() {
+		return new Vector(this.x, this.y)
+	}
+
+	plus(val) {
+		// scalar mult
+		if (typeof val == "number") {
+			return new Vector(this.x + val, this.y + val)
+		}
+
+		// dot product
+		if (val instanceof Vector) {
+			return new Vector(this.x + val.x, this.y + val.y)
+		}
+
+		throw "arg must be Vector or number"
+	}
+
+	minus(val) {
+	// scalar mult
+		if (typeof val == "number") {
+			return new Vector(this.x - val, this.y - val)
+		}
+
+		// dot product
+		if (val instanceof Vector) {
+			return new Vector(this.x - val.x, this.y - val.y)
+		}
+
+		throw "arg must be Vector or number"
+	}
+
+	mult(val) {
+		// scalar mult
+		if (typeof val == "number") {
+			return new Vector(this.x * val, this.y * val)
+		}
+
+		// dot product
+		if (val instanceof Vector) {
+			return this.x * val.x + this.y + val.y
+		}
+
+		throw "arg must be Vector or number"
+
+	}
+
+	div(val) {
+		// scalar div
+		if (typeof val != "number") {
+			throw "arg must be number"
+		}
+
+		return mult(1.0/val)
+	}
+
+	mag() {
+		return Math.sqrt(this.x ** 2 + this.y ** 2)
+	}
+
+	theta() {
+		return Math.atan2(this.x, this.y)
+	}
+}
+
+const mouse = new Vector(0, 0);
+
+// update mouse location
+(function(){
+	let bw = parseInt(
+		getComputedStyle(canvas)
+			.borderWidth.replace("px", "")
+	)
+
+	canvas.addEventListener("mousemove", (e) => {
+		mouse.x = e.layerX - bw
+		mouse.y = e.layerY - bw
+	})
+})();
+
+i = 0
+
+start = null
+end = null
+
+canvas.addEventListener("mousedown", (e) => {
+	start = mouse.currentVec()
+	end = mouse
+	console.log("start", start)
+})
+
+canvas.addEventListener("mouseup", (e) => {
+	end = mouse.currentVec()
+})
+
+// vertecies, center, radius, rotation
+function makeEqPoly(numVert, center, radius, theta) {
+	slice = 2 * Math.PI / numVert
+
+	c.beginPath()
+	for(let i = 0; i <= numVert; i ++) {
+		let ang = theta + slice * i
+		v = Vector.fromPolar(ang, radius).plus(center)
+		c.lineTo(v.x, v.y)
+	}
+	c.stroke()
+}
+
+function makeLine(p1, p2, style) {
+	c.strokeStyle = style
+	c.beginPath()
+	c.moveTo(p1.x, p1.y)
+	c.lineTo(p2.x, p2.y)
+	c.stroke()
+}
+
+function makeVector(p1, p2) {
+	let ret = new Vector(p2.x - p1.x, p1.y - p2.y)
+
+	makeLine(p1, p2, 'black')
+	makeEqPoly(3, p2, 10, ret.theta())
+
+	// x component
+	makeLine(p1, new Vector(p2.x, p1.y), 'blue')
+
+	// y component
+	makeLine(p1, new Vector(p1.x, p2.y), 'green')
+
+	// y inverted because positive y is down in canvas
+	return ret
+}
+
+function animate() {
+
+	c.fillStyle = "rgba(255,0,0,255)"
+	c.clearRect(0, 0, canvas.width, canvas.height)
+
+	let v = new Vector(0, 0)
+
+	if (start) {
+		v = makeVector(start, end)
+	}
+
+	c.fillRect(mouse.x, mouse.y, 8, 8)
+
+	log.innerHTML = JSON.stringify(v) + v.theta()
+
+	i++
+
+	window.requestAnimationFrame(animate)
+}
+
+animate()
+
+</script>
