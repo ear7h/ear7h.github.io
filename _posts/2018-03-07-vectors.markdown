@@ -104,8 +104,9 @@ const mouse = new Vector(0, 0);
 	)
 
 	canvas.addEventListener("mousemove", (e) => {
-		mouse.x = e.x - canvas.offsetLeft - bw
-		mouse.y = e.y - canvas.offsetTop - bw
+		console.log(e)
+		mouse.x = e.pageX - canvas.offsetLeft - bw
+		mouse.y = e.pageY - canvas.offsetTop - bw
 	})
 })();
 
