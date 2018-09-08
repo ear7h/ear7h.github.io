@@ -52,7 +52,10 @@ html, body {
     font-family: sans-serif;
 }
 
-//text tags
+/**
+* text
+*/
+
 a {
     font-style: inherit;
     font-size: inherit;
@@ -86,6 +89,10 @@ p {
     font-style: normal;
 }
 
+/**
+* lists
+*/
+
 ul {
     list-style-type: none;
 }
@@ -100,6 +107,13 @@ li {
 li * {
     margin: 0px;
     display: inline-block;
+}
+
+/**
+* tables
+*/
+thead > tr > th {
+    border-bottom: 10px solid black;
 }
 
 /**

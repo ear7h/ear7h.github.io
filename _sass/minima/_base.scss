@@ -264,3 +264,23 @@ pre {
     padding-top: 5px;
   }
 }
+
+/**
+ * Tables
+ */
+th {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+th:not(:first-child) {
+  border-left: 1px solid $background-color;
+}
+
+tr:nth-child(even) {
+  background-color: $off-white;
+}
+
+thead {
+  background-color: $primary-blue;
+}
