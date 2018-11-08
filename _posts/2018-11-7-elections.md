@@ -2,7 +2,7 @@
 layout: post
 title: elections
 date: 2018-11-7 16:30
-categories: programming
+categories: art
 ---
 
 <script>
