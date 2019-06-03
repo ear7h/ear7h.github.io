@@ -19,6 +19,6 @@ categories: art
 >As people came and went, <br/>
 >One made me see stars <br/>
 >In this cloudy sky. <br/>
->Clearing the heavens <br/>
+<!--> >Clearing the heavens <br/>
 >Lending love and light <br/>
->To all that happens.
+>To all that happens. <-->
