@@ -76,7 +76,7 @@ Pesto Pasta
 >
 > But while their needs are ignored the money goes to big wars.
 >
-> Origami armies unfold plans for pesto planes
+> Oregano armies unfold plans for pesto planes
 >
 > And we remain imprisoned in our own pesto chains,
 >
